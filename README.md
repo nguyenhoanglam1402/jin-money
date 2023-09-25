@@ -1,6 +1,6 @@
-# jin_app
+# jin_money
 
-A new Flutter project.
+This project supply the solution for self finance management for all of people. It'll alert user whenever have any over budget and keep your finance plan safe.
 
 ## Getting Started
 

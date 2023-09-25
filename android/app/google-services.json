@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "808298191659",
+    "project_id": "jinfamily-1cda5",
+    "storage_bucket": "jinfamily-1cda5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:808298191659:android:b350c77b60b3cdac21c36e",
+        "android_client_info": {
+          "package_name": "com.example.jin_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7g0q9RI5NUIBQmiSuQ1ef6FakXxuXtOg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -20,12 +20,10 @@ class _LoginElementState extends State<LoginElement> {
   void handleScrollView() {
     double widthItem = MediaQuery.of(context).size.width - 64;
     _listViewController.animateTo(widthItem * stepCarousel,
-        duration: const Duration(milliseconds: 250),
-        curve: Curves.easeInOut);
+        duration: const Duration(milliseconds: 250), curve: Curves.easeInOut);
   }
 
   void handleNext() {
-
     setState(() {
       if (stepCarousel < totalStep - 1) {
         stepCarousel++;
@@ -47,7 +45,8 @@ class _LoginElementState extends State<LoginElement> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return Container(
+      height: MediaQuery.of(context).size.height - 40,
       padding: const EdgeInsets.only(left: 32, right: 32, bottom: 60),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -55,11 +54,11 @@ class _LoginElementState extends State<LoginElement> {
         children: [
           const HeroElement(),
           SizedBox(
-            height: 170,
+            height: 250,
             child: ListView(
               scrollDirection: Axis.horizontal,
               controller: _listViewController,
-              // physics: const NeverScrollableScrollPhysics(),
+              physics: const NeverScrollableScrollPhysics(),
               children: const [
                 Introduction(),
                 SecondIntroduction(),
@@ -77,16 +76,18 @@ class _LoginElementState extends State<LoginElement> {
                   handleOnChoose(index);
                 },
               ),
-              GestureDetector(
-                  onTap: handleNext,
-                  child: Container(
-                    height: 50,
-                    width: 50,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(100),
-                        color: Colors.white),
-                    child: const Icon(Icons.chevron_right),
-                  ))
+              stepCarousel < totalStep - 1
+                  ? GestureDetector(
+                      onTap: handleNext,
+                      child: Container(
+                        height: 50,
+                        width: 50,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(100),
+                            color: Colors.white),
+                        child: const Icon(Icons.chevron_right),
+                      ))
+                  : const SizedBox()
             ],
           )
         ],

@@ -10,7 +10,7 @@ class TotalBalanceCard extends StatefulWidget {
 }
 
 class _TotalBalanceCardState extends State<TotalBalanceCard> {
-  double balance = 5000000000;
+  double balance = 500000000;
   
   void handleSetTotal() {
     

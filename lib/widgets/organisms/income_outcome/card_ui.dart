@@ -22,7 +22,7 @@ class IncomeOutcomeUI extends StatelessWidget {
                 color: Theme.of(context).colorScheme.secondary,
                 borderRadius: const BorderRadius.all(Radius.circular(10))),
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(20, 12, 20, 12),
+              padding: const EdgeInsets.fromLTRB(10, 12, 10, 12),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -33,7 +33,7 @@ class IncomeOutcomeUI extends StatelessWidget {
                         amount: incomeBalance,
                         title: "Income",
                       )),
-                  const DividerLine(strokeWidth: 1, space: 15,),
+                  const DividerLine(strokeWidth: 1, space: 10,),
                   Expanded(
                       flex: 1,
                       child: CashFlowTracker(

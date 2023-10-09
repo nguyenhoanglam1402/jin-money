@@ -33,6 +33,7 @@ class _EarningListState extends State<EarningList> {
                 return const Spacing(horizontal: 10);
               },
               itemCount: 10,
+              addAutomaticKeepAlives: true,
             ),
           ),
         ));

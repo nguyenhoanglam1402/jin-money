@@ -1,28 +1,50 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:jin_app/screens/login.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:jin_app/firebase_options.dart';
+import 'package:jin_app/providers/provider.dart';
+import 'package:jin_app/routers/main.dart';
 import 'package:jin_app/theme/light_theme.dart';
+import 'package:jin_app/event/firebase_authentication.dart';
 
-void main() {
-  runApp(const MyApp());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform
+  );
+  runApp(const CombineProvider(child: MyApp()));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+
+  void firebaseTokenTrackSubscribe() {
+    FirebaseAuthenticateEvents.onListenAuthStateChange(context);
+  }
+
+  @override
+  void initState() {
+    firebaseTokenTrackSubscribe();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
+      builder: FToastBuilder(),
+      locale: const Locale('en', 'US'),
       themeMode: ThemeMode.light,
       debugShowCheckedModeBanner: false,
       title: 'Jin',
       theme: LightTheme().themeData,
-      home: Container(
-        color: Colors.white,
-        child: const SafeArea(
-          child: Login(),
-        ),
-      ),
+      routerConfig: routers,
     );
   }
 }
+
